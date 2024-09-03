@@ -5,16 +5,16 @@ const app = express();
 const port = process.env.PORT || 3000;  
   
 const config = {  
-  server: 'your-database-server.database.windows.net',  
+  server: 'itri-aihub.database.windows.net',  
   authentication: {  
     type: 'default',  
     options: {  
-      userName: 'your-username',  
-      password: 'your-password'  
+      userName: 'azureadmin',  
+      password: '1qaz2wsx#EDC'  
     }  
   },  
   options: {  
-    database: 'your-database-name',  
+    database: 'ITRI-AIhub-db',  
     encrypt: true  
   }  
 };  
