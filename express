@@ -1,0 +1,38 @@
+const express = require('express');  
+const { Connection, Request } = require('tedious');  
+  
+const app = express();  
+const port = process.env.PORT || 3000;  
+  
+const config = {  
+  server: 'your-database-server.database.windows.net',  
+  authentication: {  
+    type: 'default',  
+    options: {  
+      userName: 'your-username',  
+      password: 'your-password'  
+    }  
+  },  
+  options: {  
+    database: 'your-database-name',  
+    encrypt: true  
+  }  
+};  
+  
+app.get('/', (req, res) => {  
+  const connection = new Connection(config);  
+  
+  connection.on('connect', err => {  
+    if (err) {  
+      res.send('Connection failed: ' + err.message);  
+    } else {  
+      res.send('Connected successfully to Azure SQL Database');  
+    }  
+  });  
+  
+  connection.connect();  
+});  
+  
+app.listen(port, () => {  
+  console.log(`App listening at http://localhost:${port}`);  
+});  
